@@ -109,14 +109,14 @@ WHERE title NOT LIKE '%Analyst%'
 
 SELECT domain, COUNT(*) AS number_of_jobs
 FROM data_analyst_jobs
-WHERE skill = 'SQL'
+WHERE skill ILIKE '%SQL%'
 	AND days_since_posting > 21
 	AND domain IS NOT NULL
 GROUP BY domain
 ORDER BY number_of_jobs DESC;
 
--- 1. Consulting and Business Services, 5
--- 2. Consumer Goods and Services, 2
--- 3. Computers and Electronics, 1
--- 4. Internet and Software, 1
---Total number of jobs in the top four = 9
+--"Internet and Software"	62
+--"Banks and Financial Services"	61
+--"Consulting and Business Services"	57
+--"Health Care"	52
+
