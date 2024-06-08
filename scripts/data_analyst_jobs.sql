@@ -14,6 +14,9 @@ LIMIT 10;
 --"ExxonMobil"
 
 -- 3.	How many postings are in Tennessee? How many are there in either Tennessee or Kentucky?
+SELECT COUNT(location) AS number_of_postings
+FROM data_analyst_jobs
+WHERE location = 'TN';
 
 SELECT COUNT(location) AS number_of_postings
 FROM data_analyst_jobs
@@ -23,7 +26,7 @@ WHERE location IN ('TN','KY');
 
 -- 4.	How many postings in Tennessee have a star rating above 4?
 
-SELECT*
+SELECT *
 FROM data_analyst_jobs
 WHERE location = 'TN'
 	AND star_rating > 4;
@@ -42,13 +45,17 @@ WHERE review_count BETWEEN 500 AND 1000;
 
 SELECT location, AVG(star_rating) AS avg_rating
 FROM data_analyst_jobs
-GROUP BY location;
+GROUP BY location
+ORDER BY avg_rating;
 
---KS
+--NE
 
 -- 7.	Select unique job titles from the data_analyst_jobs table. How many are there?
 
 SELECT DISTINCT title
+FROM data_analyst_jobs;
+
+SELECT COUNT (DISTINCT(title)
 FROM data_analyst_jobs;
 
 --881
@@ -86,7 +93,11 @@ SELECT title
 FROM data_analyst_jobs
 WHERE title LIKE '%Analyst%';
 
--- 1636
+SELECT COUNT (DISTINCT title)
+FROM data_analyst_jobs
+WHERE title LIKE '%Analyst%';
+
+-- 754
 
 -- 12.	How many different job titles do not contain either the word ‘Analyst’ or the word ‘Analytics’? What word do these positions have in common?
 
@@ -99,7 +110,7 @@ WHERE title NOT LIKE '%Analyst%'
 	AND title NOT LIKE '%analytics%'
 	AND title NOT LIKE '%ANALYTICS%';
 
---Tableau
+-- 4 jobs, Tableau
 
 -- **BONUS:**
 -- You want to understand which jobs requiring SQL are hard to fill. Find the number of jobs by industry (domain) that require SQL and have been posted longer than 3 weeks. 
